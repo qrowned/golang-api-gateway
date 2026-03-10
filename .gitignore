@@ -1,0 +1,34 @@
+# Binaries
+/gateway
+/cmd/gateway/gateway
+*.exe
+
+# Build output
+dist/
+bin/
+
+# Go
+vendor/
+
+# Config with real secrets (commit only config.example.yaml)
+config/local.yaml
+config/config.yaml
+*.local.yaml
+
+# Environment files
+.env
+.env.*
+
+# GoLand
+.idea/
+
+# macOS
+.DS_Store
+
+# Docker
+docker-compose.override.yml
+
+# Test output
+coverage.out
+coverage.html
+*.test

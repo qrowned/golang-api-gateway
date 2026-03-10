@@ -1,0 +1,87 @@
+server:
+  port: 8080
+  read_timeout: 30s
+  write_timeout: 30s
+  shutdown_timeout: 15s  # must be < terminationGracePeriodSeconds (30s)
+
+upstreams:
+  - name: users-service
+    urls:
+      - http://users-svc-1:8080
+      - http://users-svc-2:8080
+    cb_failure_ratio: 0.5   # open circuit when ≥50% of requests fail
+    cb_timeout: 30s          # time circuit stays open before half-open probe
+    cb_interval: 60s         # rolling window for failure counting
+    cb_min_requests: 5       # minimum requests before evaluating ratio
+
+  - name: orders-service
+    urls:
+      - http://orders-svc:8080
+    cb_failure_ratio: 0.6
+    cb_timeout: 20s
+    cb_interval: 60s
+
+routes:
+  - path: /api/v1/users/*
+    upstream: users-service
+    auth: true          # require JWT
+    rate_limit: true    # enforce rate limiting
+    methods: [GET, POST, PUT, DELETE]
+
+  - path: /api/v1/orders/*
+    upstream: orders-service
+    auth: true
+    rate_limit: true
+    methods: [GET, POST]
+
+  - path: /api/v1/public/*
+    upstream: users-service
+    auth: false         # public endpoint
+    rate_limit: true
+    methods: [GET]
+
+auth:
+  domain: "your-tenant.auth0.com"        # Auth0 tenant domain (no https://)
+  audience: "https://api.your-domain.com"
+  jwks_refresh_interval: 15m             # background JWKS key refresh interval
+
+rate_limit:
+  enabled: true
+  default_rps: 100          # requests per window per key
+  window_size: 1s           # sliding window size
+  key_strategy: ip          # ip | user | api_key
+  local_fallback: true      # fall back to in-process token bucket if Redis fails
+
+redis:
+  address: "redis:6379"     # host:port — override with GATEWAY_REDIS_ADDRESS
+  password: ""              # leave empty if no auth
+  db: 0
+  pool_size: 10
+
+cors:
+  allowed_origins:
+    - "https://app.your-domain.com"
+  allowed_methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - OPTIONS
+  allowed_headers:
+    - Authorization
+    - Content-Type
+    - X-Request-ID
+  allow_credentials: true
+  max_age: 86400  # preflight cache: 24 hours
+
+security:
+  # CIDR denylist — blocked before any processing
+  ip_denylist:
+    - "203.0.113.0/24"   # TEST-NET-3, example only
+  # CIDR allowlist — if non-empty, only these IPs pass (denylist evaluated first)
+  ip_allowlist: []
+
+  hsts_max_age: 31536000                             # 1 year
+  frame_options: "DENY"
+  referrer_policy: "strict-origin-when-cross-origin"
+  content_security_policy: "default-src 'none'"

@@ -1,0 +1,17 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+
+  echo:
+    image: ealen/echo-server   # echoes request headers/body as JSON
+    ports: ["8081:80"]
+
+  gateway:
+    build: .
+    ports: ["8080:8080"]
+    environment:
+      GATEWAY_CONFIG_PATH: /config/config.yaml
+    volumes:
+      - ./config/local.yaml:/config/config.yaml:ro
+    depends_on: [redis, echo]
