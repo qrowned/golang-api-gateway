@@ -69,7 +69,7 @@ jobs:
       # ── Create a GitHub Release with auto-generated release notes ─────────
       # The release makes the module version visible on pkg.go.dev and
       # importable via:
-      #   go get github.com/qrowned/golang-api-gateway/pkg/gateway@VERSION
+      #   go get github.com/lucabartmann/golang-api-gateway/pkg/gateway@VERSION
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:

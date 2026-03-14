@@ -7,15 +7,15 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	chimw "github.com/go-chi/chi/v5/middleware"
-	"github.com/qrowned/golang-api-gateway/internal/config"
-	"github.com/qrowned/golang-api-gateway/internal/health"
-	authmw "github.com/qrowned/golang-api-gateway/internal/middleware/auth"
-	"github.com/qrowned/golang-api-gateway/internal/middleware/cors"
-	"github.com/qrowned/golang-api-gateway/internal/middleware/logging"
-	ratelimitmw "github.com/qrowned/golang-api-gateway/internal/middleware/ratelimit"
-	"github.com/qrowned/golang-api-gateway/internal/middleware/recovery"
-	"github.com/qrowned/golang-api-gateway/internal/middleware/security"
-	"github.com/qrowned/golang-api-gateway/internal/proxy"
+	"github.com/lucabartmann/golang-api-gateway/internal/config"
+	"github.com/lucabartmann/golang-api-gateway/internal/health"
+	authmw "github.com/lucabartmann/golang-api-gateway/internal/middleware/auth"
+	"github.com/lucabartmann/golang-api-gateway/internal/middleware/cors"
+	"github.com/lucabartmann/golang-api-gateway/internal/middleware/logging"
+	ratelimitmw "github.com/lucabartmann/golang-api-gateway/internal/middleware/ratelimit"
+	"github.com/lucabartmann/golang-api-gateway/internal/middleware/recovery"
+	"github.com/lucabartmann/golang-api-gateway/internal/middleware/security"
+	"github.com/lucabartmann/golang-api-gateway/internal/proxy"
 )
 
 // Options bundles the dependencies needed to build the router.

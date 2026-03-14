@@ -77,7 +77,7 @@ Internet ──────────────▶│  [1] Recovery         
 ## Project Structure
 
 ```
-github.com/qrowned/golang-api-gateway/
+github.com/lucabartmann/golang-api-gateway/
 ├── cmd/
 │   └── gateway/
 │       └── main.go                  # entry point, dependency wiring
@@ -437,13 +437,13 @@ pkg/gateway/
 **Same repository:**
 
 ```go
-import "github.com/qrowned/golang-api-gateway/pkg/gateway"
+import "github.com/lucabartmann/golang-api-gateway/pkg/gateway"
 ```
 
 **Separate repository:**
 
 ```bash
-go get github.com/qrowned/golang-api-gateway/pkg/gateway@latest
+go get github.com/lucabartmann/golang-api-gateway/pkg/gateway@latest
 ```
 
 The package has no external dependencies beyond the Go standard library.

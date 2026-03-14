@@ -9,7 +9,7 @@ import (
 	"net/http/httputil"
 
 	chimw "github.com/go-chi/chi/v5/middleware"
-	"github.com/qrowned/golang-api-gateway/pkg/logger"
+	"github.com/lucabartmann/golang-api-gateway/pkg/logger"
 	"github.com/sony/gobreaker"
 )
 

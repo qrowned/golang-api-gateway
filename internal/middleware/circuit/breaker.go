@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/qrowned/golang-api-gateway/internal/config"
+	"github.com/lucabartmann/golang-api-gateway/internal/config"
 	"github.com/sony/gobreaker"
 )
 

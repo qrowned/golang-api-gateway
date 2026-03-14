@@ -5,8 +5,8 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/qrowned/golang-api-gateway/internal/config"
-	"github.com/qrowned/golang-api-gateway/pkg/logger"
+	"github.com/lucabartmann/golang-api-gateway/internal/config"
+	"github.com/lucabartmann/golang-api-gateway/pkg/logger"
 )
 
 // IPFilterMiddleware blocks or allows requests based on CIDR allowlist/denylist.

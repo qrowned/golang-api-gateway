@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/qrowned/golang-api-gateway/pkg/logger"
+	"github.com/lucabartmann/golang-api-gateway/pkg/logger"
 )
 
 // Middleware injects a request-scoped logger and logs every request.

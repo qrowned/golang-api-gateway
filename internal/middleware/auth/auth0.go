@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/qrowned/golang-api-gateway/internal/config"
-	"github.com/qrowned/golang-api-gateway/pkg/logger"
+	"github.com/lucabartmann/golang-api-gateway/internal/config"
+	"github.com/lucabartmann/golang-api-gateway/pkg/logger"
 
 	"github.com/lestrrat-go/jwx/v2/jwk"
 	"github.com/lestrrat-go/jwx/v2/jwt"

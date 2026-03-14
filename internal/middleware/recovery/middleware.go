@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"runtime/debug"
 
-	"github.com/qrowned/golang-api-gateway/pkg/logger"
+	"github.com/lucabartmann/golang-api-gateway/pkg/logger"
 )
 
 // Middleware recovers from panics, logs a stack trace, and returns a 500.

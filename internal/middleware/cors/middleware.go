@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/qrowned/golang-api-gateway/internal/config"
+	"github.com/lucabartmann/golang-api-gateway/internal/config"
 )
 
 // Middleware handles CORS preflight and adds CORS response headers.
